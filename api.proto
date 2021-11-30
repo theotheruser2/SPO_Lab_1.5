@@ -1,0 +1,32 @@
+
+syntax = "proto2";
+
+message command {
+  repeated string path = 1;
+
+  oneof type {
+    create_command create = 2;
+    read_command read = 3;
+    update_command update = 4;
+    delete_command delete = 5;
+  }
+}
+
+message create_command {
+  optional string value = 1;
+}
+
+message read_command {}
+
+message update_command {
+  required string value = 1;
+}
+
+message delete_command {
+  required bool value = 1;
+}
+
+message message {
+  required int32 status = 1;
+  required string info = 2;
+}
